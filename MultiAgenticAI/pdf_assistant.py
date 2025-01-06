@@ -13,8 +13,8 @@ os.environ["GROQ_API_KEY"]=os.getenv("GROQ_API_KEY")
 db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
 
 knowledge_base=PDFUrlKnowledgeBase(
-    urls=["https://artworkdependencies.s3.us-east-1.amazonaws.com/tmp/ceo1.pdf"],
-    vector_db=PgVector2(collection="ceo",db_url=db_url)
+    urls=["PDF_URL"],
+    vector_db=PgVector2(collection="database_name",db_url=db_url)
 )
 
 knowledge_base.load()
@@ -34,11 +34,8 @@ def pdf_assistant(new: bool = False, user: str = "user"):
         user_id=user,
         knowledge_base=knowledge_base,
         storage=storage,
-        # Show tool calls in the response
         show_tool_calls=True,
-        # Enable the assistant to search the knowledge base
         search_knowledge=True,
-        # Enable the assistant to read the chat history
         read_chat_history=True,
     )
     if run_id is None:
