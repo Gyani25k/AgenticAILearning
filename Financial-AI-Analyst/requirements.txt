@@ -7,3 +7,9 @@ fastapi
 uvicorn
 groq
 requests
+sqlalchemy
+pgvector
+psycopg2-binary
+pypdf
+textract
+azure-storage-blob
